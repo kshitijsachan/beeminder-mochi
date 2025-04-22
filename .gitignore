@@ -8,7 +8,8 @@ venv/
 .env
 
 # Sensitive files
-upload_mochi_data_to_beeminder.sh
+upload_to_beeminder.sh
+log.txt
 
 # uv
 .venv/
