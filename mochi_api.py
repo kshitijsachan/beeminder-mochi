@@ -159,11 +159,10 @@ def post_to_beeminder(api_key: str, username: str, goal: str, value: int):
     """Post data to Beeminder API."""
     url = f"https://www.beeminder.com/api/v1/users/{username}/goals/{goal}/datapoints.json"
 
-    today = datetime.datetime.now().strftime('%Y-%m-%d')
     data = {
         "auth_token": api_key,
         "value": value,
-        "comment": f"Mochi cards reviewed on {today}",
+        "comment": f"Mochi cards reviewed on {datetime.datetime.now().strftime('%Y-%m-%d')}",
     }
 
     response = httpx.post(url, data=data)
@@ -231,10 +230,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-"""
-test card that I reviewed today (4/21/25):
-TPU systolic array: what order is the output result written in?
-
-UPDATE: Yep it does!
-"""
