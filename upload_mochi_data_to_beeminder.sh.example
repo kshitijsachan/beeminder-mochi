@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Path to your Python interpreter (use the full path)
+PYTHON=".venv/bin/python"  # Using uv's virtual environment
+
+# Path to your script
+SCRIPT_PATH="./mochi_api.py"
+
+# Your API keys and parameters (use environment variables)
+MOCHI_KEY="${MOCHI_API_KEY}"
+BEEMINDER_KEY="${BEEMINDER_API_KEY}"
+BEEMINDER_USER="your_username"
+BEEMINDER_GOAL="your_goal"
+MINIMUM_CARDS=10
+
+# Run the script
+$PYTHON $SCRIPT_PATH --mochi-key $MOCHI_KEY --beeminder --beeminder-key $BEEMINDER_KEY --beeminder-user $BEEMINDER_USER --beeminder-goal $BEEMINDER_GOAL --minimum-cards $MINIMUM_CARDS

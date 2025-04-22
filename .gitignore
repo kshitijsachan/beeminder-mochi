@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.env
+
+# Sensitive files
+upload_mochi_data_to_beeminder.sh
+
+# uv
+.venv/
