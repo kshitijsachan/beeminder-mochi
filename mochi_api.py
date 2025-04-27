@@ -159,18 +159,22 @@ def post_to_beeminder(api_key: str, username: str, goal: str, value: int):
     """Post data to Beeminder API."""
     url = f"https://www.beeminder.com/api/v1/users/{username}/goals/{goal}/datapoints.json"
 
+    today = datetime.datetime.now().strftime('%Y-%m-%d')
     data = {
         "auth_token": api_key,
         "value": value,
-        "comment": f"Mochi cards reviewed on {datetime.datetime.now().strftime('%Y-%m-%d')}",
+        "comment": f"Mochi cards reviewed on {today}",
     }
 
     response = httpx.post(url, data=data)
 
+    # Print timestamp for logging
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
     if response.status_code == 200:
-        print(f"Successfully posted {value} to Beeminder goal {goal}")
+        print(f"[{timestamp}] Successfully posted {value} to Beeminder goal {goal}")
     else:
-        print(f"Error posting to Beeminder: {response.status_code}")
+        print(f"[{timestamp}] Error posting to Beeminder: {response.status_code}")
         print(response.text)
 
 
